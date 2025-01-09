@@ -34,6 +34,12 @@ type Console struct {
 	offset    int
 }
 
+// NewConsole creates a new console with a buffer and a viewport
+/**
+ * The Console class is a facade that provides a simple interface to the client. It hides the complexity of the Buffer and
+ * Viewport classes. The client can interact with the Console class without knowing the details of the Buffer and Viewport
+ * classes.
+ */
 func NewConsole() *Console {
 	b := NewBuffer(200, 150)
 	v := NewViewport(b)
@@ -48,6 +54,11 @@ func (c *Console) GetCharacterAt(index int) rune {
 	return c.viewports[0].GetCharacterAt(index)
 }
 
+/**
+ * The client can use the NewConsole, to get rid of the complexity of the Buffer and Viewport classes.
+ * If they want, they can use the Buffer and Viewport classes directly.
+ * The facade pattern is useful when you want to provide a simple interface to a complex subsystem.
+ */
 func main() {
 	c := NewConsole()
 	u := c.GetCharacterAt(1)
